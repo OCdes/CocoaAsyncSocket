@@ -14,6 +14,8 @@
 #import <CFNetwork/CFNetwork.h>
 #endif
 
+
+#import <PushKit/PushKit.h>
 #import <TargetConditionals.h>
 #import <arpa/inet.h>
 #import <fcntl.h>
@@ -8200,8 +8202,8 @@ static void CFWriteStreamCallback (CFWriteStreamRef stream, CFStreamEventType ty
 	
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	r1 = CFReadStreamSetProperty(readStream, kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);
-	r2 = CFWriteStreamSetProperty(writeStream, kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);
+	r1 = CFReadStreamSetProperty(readStream, kCFStreamNetworkServiceType, PKPushTypeVoIP);
+	r2 = CFWriteStreamSetProperty(writeStream, kCFStreamNetworkServiceType, PKPushTypeVoIP);
 #pragma clang diagnostic pop
 
 	if (!r1 || !r2)
